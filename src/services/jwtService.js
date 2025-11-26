@@ -32,5 +32,13 @@ export const jwtService = {
         const accessToken = this.generateAccessToken(payload);
         const refreshToken = this.generateRefreshToken(payload);
         return { accessToken, refreshToken };
+    },
+    extractTokenFromHeader(headers = {}){
+        const authHeader = headers.authorization || headers.Authorization;
+        if (!authHeader) return null;
+
+        const parts = authHeader.split(' ');
+        if (parts.length !==2 || parts[0] !== 'Bearer') return null;
+        return parts[1];
     }
 };

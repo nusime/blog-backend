@@ -91,7 +91,6 @@ const authMiddleware =  {
                 username: user.username,
                 email: user.email,
                 role: user.role,
-                isActive: user.is_active ?? true
             };
             next();
         } catch (error) {
